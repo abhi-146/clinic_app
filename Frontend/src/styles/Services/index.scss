@@ -1,0 +1,176 @@
+@import "../fonts";
+@import "../colors";
+
+.services {
+  padding: 4rem 2rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+
+  &__title {
+    @include font_medium40;
+    text-align: center;
+  }
+
+  &__description {
+    @include font_regular15;
+    text-align: center;
+    width: 1000px;
+
+    @media (max-width: 768px) {
+      width: 100%; // Adjust to fit smaller screens
+    }
+  }
+
+  &__content {
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 2rem;
+
+    @media (max-width: 1024px) {
+      max-width: 90%;
+    }
+  }
+
+  &__card {
+    display: flex;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    padding: 1rem;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    &-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-block: 1rem;
+    }
+
+    &-img {
+      width: 100%;
+      max-width: 450px;
+      height: 250px;
+      border-radius: 5px;
+      object-fit: cover;
+
+      @media (max-width: 768px) {
+        max-width: 100%; // Reduce image size on smaller screens
+        height: 200px;
+      }
+
+      @media (max-width: 480px) {
+        max-width: 100%; // Make it full width on very small screens
+        height: auto;
+      }
+    }
+
+    &-description {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: start;
+      gap: 15px;
+      text-align: left;
+      padding: 1rem;
+
+      &-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+
+        @media (max-width: 768px) {
+          font-size: 1.2rem;
+          align-items: center;
+        }
+      }
+
+      &-text {
+        font-size: 13px;
+        color: #555;
+
+        @media (max-width: 768px) {
+          font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 0.8rem;
+        }
+      }
+
+      &-btn {
+        background-color: $c-blue;
+        color: #fff;
+        border: none;
+        padding: 5px;
+        width: 100px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 0.9rem;
+       // Adjust button size for smaller screens
+        }
+
+        @media (max-width: 480px) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  // Media Queries for Layout Adjustments
+  @media (max-width: 1024px) {
+    &__card {
+      flex-direction: column; // Stack image and description vertically
+      align-items: center;
+    }
+
+    &__card-description {
+      text-align: left; // Center-align text for stacked layout
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 30px; // Reduce gap between elements
+
+    &__content {
+      padding: 1.5rem;
+      gap: 15px;
+    }
+
+    &__card {
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1rem;
+
+    &__title {
+      font-size: 1.5rem; // Adjust title font size
+    }
+
+    &__description {
+      font-size: 0.9rem;
+    }
+  }
+}

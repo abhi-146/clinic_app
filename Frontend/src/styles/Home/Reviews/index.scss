@@ -1,0 +1,111 @@
+@import '../../fonts';
+@import '../../colors';
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1310px;
+    gap: 60px;
+    margin: 0 auto;
+    margin-top: 120px;
+    padding-inline: 20px;
+
+    @media (max-width: 768px) {
+        margin-top: 40px;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    &__heading {
+        @include font_medium40;
+
+        @media (max-width: 768px) {
+            @include font__medium24;
+            
+        }
+    }
+
+    &__card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-inline: 20px;
+
+        &-img {
+            border-radius: 50%;
+            width: 110px;
+            height: 110px;
+        }
+
+        &-name{
+            @include font__medium20;
+            margin-top: 16px;
+        }
+
+        &-review{
+            @include font_regular15;
+            color: $c-grey1;
+            margin-top: 16px;
+        }
+    }
+
+   
+
+    .swiper {
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #333;
+        
+
+        &:after {
+            font-size: 16px;
+        }
+    }
+
+
+    .swiper-pagination{
+        top: unset !important;
+        bottom: -7px;
+    }
+
+    .swiper-pagination-bullet {
+        background: #333;
+        
+    }
+
+    &__cardWrap {
+        // Remove grid styles as Swiper handles the layout dynamically
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    // Adjust card layout for different screen sizes
+    @media (max-width: 1024px) {
+        .swiper-slide {
+            // Ensure cards take full width on smaller screens
+            flex: 1 0 100%;
+            text-align: center;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .swiper-slide {
+            // For screens wider than 1024px, each card should take up one-third of the container
+            flex: 1 0 33.33%;
+        }
+    }
+}

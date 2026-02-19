@@ -1,0 +1,40 @@
+@import 'styles/colors';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+ul li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+button{
+  border: none;
+  background: none;
+
+}
+
+input, textarea , select{
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  line-height: 1;
+  font-size: 0;
+}

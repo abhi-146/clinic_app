@@ -1,0 +1,133 @@
+@import '../../colors';
+@import '../../fonts';
+
+
+.army{
+    width: 100%;
+    max-width: 1310px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 80px;
+    padding-inline: 20px;
+
+    @media (max-width: 768px) {
+       margin-top: 30px;
+    }
+
+    &__headingWrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+
+        &-heading {
+            @include font__medium20;
+            position: relative;
+
+
+
+            &::after {
+                position: absolute;
+                height: 1px;
+                width: 100%;
+                top: 10px;
+                background-color: $c-black;
+            }
+        }
+
+        &-subheading {
+            text-align: center;
+            @include font__medium36;
+
+
+            @media (max-width: 768px) {
+                @include font__medium20;
+                text-align: left;
+            }
+        }
+    }
+
+    &__descWrap {
+        margin-top: 70px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 40px;
+
+
+
+        @media (max-width: 1440px) {
+            grid-template-columns: 1fr;
+            width: 100%;
+            max-width: 700px;
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            margin-top: 20px;
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            @media (max-width: 1440px) {
+                border: 1px solid #8a8a8a56;
+                padding: 14px;
+                border-radius: 10px;
+            }
+
+            @media (max-width: 768px) {
+                gap: 16px;
+            }
+
+            &-img {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+            &-heading {
+                @include font_medium17;
+
+                @media (max-width: 768px) {
+                    @include font_medium13;
+                }
+            }
+
+            &-desc {
+                @include font_medium15;
+                color: $c-grey1;
+
+                @media (max-width: 768px) {
+                    @include font_regular13;
+                }
+            }
+        }
+    }
+
+    &__btn {
+        margin-top: 60px;
+
+        @media (max-width: 1440px) {
+            margin-top: 30px;
+        }
+    }
+
+    &__modalWrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        z-index: 99;
+    }
+
+}

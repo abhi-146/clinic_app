@@ -1,0 +1,115 @@
+@import '../fonts';
+@import '../colors';
+
+
+.footer {
+    background-color: #e9f7f7;
+    width: 100%;
+    display: flex;
+    flex-direction: column; // Ensures the items stack vertically
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    position: relative;
+    margin-top: 100px;
+
+    @media (max-width: 768px) {
+        padding-inline: 20px;
+        margin-top: 40px;
+    }
+
+    img + div {
+        margin-top: 20px;
+    }
+
+    img {
+        width: 130px;
+        height: 110px;
+
+        @media (max-width: 768px) {
+            width: 100px;
+            height: 80px;
+        }
+    }
+
+    &__linksWrap {
+        width: 100%;
+        max-width: 1310px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 90px;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 768px) {
+            width: 100%;
+            grid-template-columns: 1fr;
+            row-gap: 50px;
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .--links {
+                margin-top: 30px;
+            }
+
+            &Heading {
+                color: $c-blue;
+                @include font__medium20;
+
+                @media (max-width: 768px) {
+                    @include font_medium17;
+                }
+            }
+
+            &Links {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                a {
+                    @include font_regular17;
+                    transition: all 0.3s;
+
+                    @media (max-width: 768px) {
+                        @include font_regular13;
+                    }
+
+                    &:hover {
+                        color: $c-blue;
+                    }
+                }
+
+                p {
+                    width: 100%;
+                    max-width: 380px;
+                    @include font_medium17;
+
+                    @media (max-width: 768px) {
+                        @include font_medium13;
+                    }
+                }
+
+                img + p + p {
+                    padding-left: 24px;
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        width: 100%; // Ensures it spans the full width
+        text-align: center;
+        background-color:#12AC8E;
+        color: #fff;
+        position: absolute;
+        bottom: 0px;
+        padding: 8px 0;
+        font-size: 14px;
+    }
+}

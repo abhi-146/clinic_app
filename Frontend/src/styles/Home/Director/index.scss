@@ -1,0 +1,86 @@
+@import '../../fonts';
+@import '../../colors';
+
+.director {
+    width: 100%;
+    max-width: 1310px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    margin: 0 auto;
+    margin-top: 90px;
+    padding-inline: 20px;
+
+    @media(max-width: 768px) {
+        align-items: flex-start;
+        margin-top: 30px;
+        gap: 30px;
+    }
+
+
+    &__heading {
+        @include font_medium40;
+
+        @media(max-width: 768px) {
+            @include font__medium24;
+            text-align: left;
+        }
+
+    }
+
+    &__details {
+        display: flex;
+        gap: 50px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 30px;
+
+        @media (max-width: 1024px) {
+            flex-direction: column;
+        }
+    }
+
+    &__image {
+        width: 450px;
+        height: 450px;
+        border-radius: 10px;
+
+        @media (max-width: 1024px) {
+            width: 100%;
+            height: auto;
+        }
+
+    }
+
+    &__message-wrap {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        text-align: left;
+
+        &-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 1rem;
+
+            @media(max-width: 768px) {
+                @include font_regular13;
+            }
+        }
+
+        &-sign {
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-style: italic;
+            color: #333;
+
+            @media(max-width: 768px) {
+                font-size: 15px;
+            }
+        }
+    }
+}

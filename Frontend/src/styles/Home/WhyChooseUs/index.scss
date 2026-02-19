@@ -1,0 +1,193 @@
+@import '../../fonts';
+@import '../../colors';
+
+
+.whyChooseUs {
+    width: 100%;
+    max-width: 1310px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+    padding-inline: 20px;
+
+    @media (max-width: 1024px) {
+       margin-top: 70px;
+    }
+
+    @media (max-width: 768px) {
+        text-align: left;
+        align-items: flex-start;
+        margin-top: 40px;
+    }
+
+    &__heading {
+        @include font_medium40;
+
+        @media (max-width: 768px) {
+            @include font__medium24;
+        }
+    }
+
+    &__subheading {
+        @include font_medium15;
+        text-align: center;
+        margin-top: 20px;
+        color: $c-grey1;
+        max-width: 800px;
+
+        @media (max-width: 768px) {
+            @include font_medium13;
+            text-align: left;
+            margin-top: 10px;
+        }
+    }
+
+    &__infoWrap {
+        margin-top: 60px;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+
+        @media (max-width: 1440px) {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            margin-top: 20px;
+        }
+
+        &-lhs {
+
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            @media (max-width: 1440px) {
+                flex-direction: row;
+                align-items: flex-end;
+                width: 100%;
+            }
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            &-designation {
+                text-align: center;
+                @include font_medium17;
+
+                @media (max-width: 1440px) {
+                    text-align: left;
+                }
+
+                @media (max-width: 768px) {
+                    @include font_medium13;
+                }
+            }
+
+            &-img {
+                width: 350px;
+                height: 450px;
+                border-radius: 10px;
+
+                @media (max-width: 1024px)
+                {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+
+    }
+
+    .showDesc {
+
+        .whyChooseUs__descWrap-cardHeading,
+        .whyChooseUs__descWrap-cardLogo {
+            display: none;
+        }
+
+        .whyChooseUs__descWrap-cardSubheading {
+            display: flex;
+        }
+    }
+
+    &__descWrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+
+        @media (max-width: 1024px) {
+            grid-template-columns: 1fr;
+        }
+
+        &-card {
+            height: 300px;
+            min-width: 400px;
+            background-color: white;
+            border-radius: 30px;
+            padding: 20px 30px;
+            box-shadow: rgba(0, 0, 0, 0.1) 2px 8px 10px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 40px;
+            transition: transform 0.3s ease-in-out;
+
+            @media (max-width: 768px) {
+                min-width: unset;
+                width: 100%;
+                height: 200px;
+                padding: 16px;
+                gap: 40px;
+            }
+
+            &:hover {
+                transform: scale(1.05);
+            }
+
+            &Logo {
+                background-color: $c-blue;
+                padding: 16px;
+                border-radius: 50%;
+                color: $c-white;
+                width: 110px;
+                height: 110px;
+                font-size: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                @media (max-width: 768px) {
+                    width: 70px;
+                    height: 70px;
+                    font-size: 24px;
+                }
+            }
+
+            &Heading {
+                @include font_medium17;
+
+                @media (max-width: 768px) {
+                    @include font_medium15;
+                }
+            }
+
+            &Subheading {
+                @include font_regular15;
+                width: 250px;
+
+                @media (max-width: 768px) {
+                    @include font_regular13;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
