@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://pointernational.in/api/contact");
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/contact`);
         if (response) {
           setData(response.data);
         }

@@ -76,7 +76,7 @@ const Form = ({ isFieldvisible, isIconVisible, showModal, setShowModal }) => {
 
     const postData = async () => {
         try {
-            const response = await axios.post("https://pointernational.in/api/contact", formData);
+            const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/contact`, formData);
             if (response) {
                 setFormData({
                     name: '',

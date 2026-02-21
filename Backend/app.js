@@ -1,68 +1,77 @@
 const express = require('express');
-const mysql = require('mysql');
-const cors = require("cors")
-require("dotenv").config()
+const mongoose = require('mongoose');
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT;
-app.use(cors({ origin: "https://pointernational.in" }))
+const port = process.env.PORT || 5000;
+
+// Update CORS to use environment variable
+app.use(cors({
+  origin: process.env.CORS_ORIGIN
+}));
+
 app.use(express.json());
 
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port : process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+// --- MongoDB Connection ---
+// No quotes needed in the .env file; dotenv handles it
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB Connected successfully...'))
+  .catch(err => console.error('Database connection failed:', err.message));
+
+// --- Schema Definition ---
+const contactSchema = new mongoose.Schema({
+  name: String,
+  number: String,
+  address: String,
+  treatment: String,
+  army: String,
+  dateAndTime: { type: Date, default: Date.now }
 });
 
-db.connect((err) => {
-  if (err) {
-    console.error('Database connection failed:', err.stack);
-    return;
+const Contact = mongoose.model('Contact', contactSchema);
+
+// --- Routes ---
+
+// POST API
+app.post('/api/contact', async (req, res) => {
+  try {
+    const newContact = new Contact(req.body);
+    await newContact.save();
+    res.status(201).json({ message: 'Data inserted successfully.' });
+  } catch (err) {
+    console.error('POST Error:', err);
+    res.status(500).json({ error: 'Failed to insert data.' });
   }
 });
 
-app.post('/api/contact', (req, res) => {
-  const { name, number, address, treatment,army } = req.body;
-  console.log(req.body);
-  
-  
-  const sql = 'INSERT INTO contact (name, number, address, treatment, army) VALUES (?, ?, ?, ?, ?)';
-  db.query(sql, [name, number, address, treatment, army], (err, result) => {
-    if (err) {
-      console.error('Error inserting data:', err);
-      return res.status(500).send('Failed to insert data.');
-    }
-    res.status(201).send('Data inserted successfully.');
-  });
-});
+// GET API
+app.get('/api/contact', async (req, res) => {
+  try {
+    const results = await Contact.find().sort({ dateAndTime: -1 });
 
-//   // GET API to Send Data to Frontend
-app.get('/api/contact', (req, res) => {
-  const sql = 'SELECT * FROM contact';
-  db.query(sql, (err, results) => {
-    if (err) {
-      console.error('Error fetching data:', err);
-      return res.status(500).send('Failed to fetch data.');
-    }
+    const formattedResults = results.map(doc => {
+      // Convert the Mongoose document to a plain JavaScript object
+      const obj = doc.toObject();
 
-    const formattedResults = results.map(row => ({
-      ...row,
-      date: new Date(row.dateAndTime).toLocaleDateString('en-US', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric',
-      }),
-    }));
+      return {
+        ...obj,
+        id: obj._id.toString(), // Add the 'id' field MUI Data Grid requires
+        date: new Date(obj.dateAndTime).toLocaleDateString('en-US', {
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric',
+        }),
+      };
+    });
 
     res.status(200).json(formattedResults);
-  });
+  } catch (err) {
+    console.error('GET Error:', err);
+    res.status(500).json({ error: 'Failed to fetch data.' });
+  }
 });
 
-
-
-// Start the Server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
