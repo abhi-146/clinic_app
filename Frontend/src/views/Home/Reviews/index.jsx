@@ -20,19 +20,19 @@ const Reviews = () => {
     },
     {
       id: 2,
-      name: "John",
+      name: "Rohan",
       review:
         "I highly recommend P&O International to anyone in need of a high-quality upper limb prosthesis. Their expertise and commitment to improving mobility and independence are unmatched!",
       image: Review2,
     },
     {
       id: 3,
-      name: "Jim",
+      name: "Dinesh",
       review:
         "I recently got a cosmetic prosthesis from P&O International, and I am beyond impressed with the quality and service! From the very first consultation, their team made me feel comfortable and confident about the entire process.",
       image: Review3,
     },
-    
+
   ];
 
   return (

@@ -9,7 +9,7 @@ const Team = () => {
   const teamMembers = [
     {
       id: 1,
-      name: "Anumpma Sharma",
+      name: "Ms. Anupama",
       designation: "General Manager",
       imgSrc: DoctorImg1,
     },
