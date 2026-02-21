@@ -5,10 +5,19 @@ require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
+const allowedOrigins = process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : [];
 
 // Update CORS to use environment variable
 app.use(cors({
-  origin: process.env.CORS_ORIGIN
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 app.use(express.json());
