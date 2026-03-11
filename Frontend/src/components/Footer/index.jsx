@@ -48,8 +48,9 @@ const Footer = () => {
             <h4 className="footer__linksWrap-listHeading">Contact Us</h4>
             <div className="footer__linksWrap-listLinks --links">
               <p>
-                O – 46, Near Vinobapuri Metro Station, Gate No-1 Behind Imperial
-                Hotel, Lajpat Nagar- II, New Delhi, Delhi 110024
+              O-61, Ground Floor, Beside  Mother  Dairy
+              Near  Vinobapuri  Metro Station Gate  Number - 1,
+              Lajpat  Nagar  2 , New Delhi - 110024
               </p>
               <p>Email: info@pointernational.in</p>
               <p>Toll-Free: +91 8881788788, Whatsapp No: +91 88003 93472</p>

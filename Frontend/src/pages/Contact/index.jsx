@@ -25,9 +25,9 @@ const ContactUs = () => {
             <div className="contact-us__content-details-item">
               <FaMapMarkerAlt className="contact-us__content-details-icon" />
               <p>
-                <strong>Address:</strong> PO – 46, Near Vinobapuri Metro
-                Station, Gate No-1 Behind Imperial Hotel, Lajpat Nagar- II, New
-                Delhi, Delhi 110024
+                <strong>Address:</strong> O-61, Ground Floor, Beside  Mother  Dairy
+              Near  Vinobapuri  Metro Station Gate  Number - 1,
+              Lajpat  Nagar  2 , New Delhi - 110024
               </p>
             </div>
             <div className="contact-us__content-details-item">
